@@ -70,3 +70,9 @@ button {
 span {
     padding: 10px;
 }
+
+#description {
+    font-size: 1rem;
+    border: none;
+    padding: 5px;
+}
