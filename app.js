@@ -60,14 +60,11 @@ let paraID = 0;
 
 addModuleButton.addEventListener('click', function(){
     var paragraph = document.createElement('p');
-    
-    paragraph.innerText = "Module: " + modNameField.value;
-    paragraph.innerText += "     Level: " + levelField.value;
-    paragraph.innerText += "     Class: " + classField.value;
-    paragraph.innerText += "     Credits: " + creditsField.value;
 
-    paragraph.style.cursor = "pointer";
-    paragraph.style['font-size'] = "1.5rem";
+    paragraph.innerHTML = "<span class='blue'>" + modNameField.value + "</span>";
+    paragraph.innerHTML += "<br/><br/><span>Level: " + levelField.value + "</span>";
+    paragraph.innerHTML += "<span>Class: " + classField.value + "</span>";
+    paragraph.innerHTML += "<span>Credits: " + creditsField.value + "</span>";
 
     paraID += 1;
     paragraph.id = paraID;
