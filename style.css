@@ -65,7 +65,8 @@ button {
 }
 
 .blue {
-    color: slateblue;
+    color: tomato;
+    font-weight: bold;
 }
 
 span {
