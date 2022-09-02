@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>OU Classification Calculator</title>
+</head>
+<body>
+    <h1>OU Classification Calculator</h1>
+    <div id="container">
+        
+        <label for="modName">Module:</label>
+        <input id="modName" type="text">
+
+        <label for="level">Level:</label>
+        <select id="level" name="level">
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <label for="class">Classification:</label>
+        <select id="class" name="class">
+            <option value="1">First Class</option>
+            <option value="2">Upper Second Class</option>
+            <option value="3">Lower Second Class</option>
+            <option value="4">Third Class</option>
+        </select>
+
+        <label for="credits">Credits:</label>
+        <select id="credits" name="credits">
+            <option value="30">30</option>
+            <option value="60">60</option>
+        </select>
+
+        <button id="addModule">+</button>
+
+    </div>
+
+    <div id="modulesContainer">
+    </div>
+
+    <button id="calcButton">Calcuate Classification</button>
+
+    <script src="app.js"></script>
+</body>
+</html>

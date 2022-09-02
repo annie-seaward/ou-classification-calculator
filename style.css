@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    background-color: powderblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#addModule {
+    background: green;
+    color: white;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+label, select, input, button {
+    font-size: 1.5rem;
+    margin: 5px;
+}
+
+label {
+    margin-left: 30px;
+}
+
+#container {
+    border-style: solid;
+    border-radius: 25px;
+    width: fit-content;
+    padding: 25px;
+}

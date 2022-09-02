@@ -1,38 +1,6 @@
 let courses = {
-    level2: [
-        {
-            code: 'S209',
-            credits: 60,
-            classification: 1,
-        },
-        {
-            code: 'TT284',
-            credits: 30,
-            classification: 1,
-        },
-        {
-            code: 'TM255',
-            credits: 30,
-            classification: 4,
-        }
-    ],
-    level3: [
-        {
-            code: 'T317',
-            credits: 60,
-            classification: 1,
-        },
-        {
-            code: 'TM352',
-            credits: 30,
-            classification: 1,
-        },
-        {
-            code: 'S350',
-            credits: 30,
-            classification: 2,
-        }
-    ]
+    level2: [],
+    level3: []
 };
 
 function checkCredits (arr) {
@@ -79,17 +47,69 @@ function calcSecondCheck (arr) {
     }
 }
 
-let level2 = checkCredits(courses.level2);
+let modulesContainer = document.getElementById('modulesContainer');
 
-let level3 = checkCredits(courses.level3);
+let modNameField = document.getElementById('modName');
+let levelField = document.getElementById('level');
+let classField = document.getElementById('class');
+let creditsField = document.getElementById('credits');
 
+let addModuleButton = document.getElementById('addModule');
 
-if (level2.correctCredits && level3.correctCredits) {
-    level3.totalPoints = level3.totalPoints * 2;
-    let sumPoints = level2.totalPoints + level3.totalPoints;
-    let firstCheck = calcFirstCheck(sumPoints);
-    let secondCheck = calcSecondCheck(courses.level3);
-    console.log(firstCheck >= secondCheck ? firstCheck : secondCheck);
-} else {
-    console.log("Incorrect number of credits");
-}
+let paraID = 0;
+
+addModuleButton.addEventListener('click', function(){
+    var paragraph = document.createElement('p');
+    
+    paragraph.innerText = "Module: " + modNameField.value;
+    paragraph.innerText += "     Level: " + levelField.value;
+    paragraph.innerText += "     Class: " + classField.value;
+    paragraph.innerText += "     Credits: " + creditsField.value;
+
+    paragraph.style.cursor = "pointer";
+    paragraph.style['font-size'] = "1.5rem";
+
+    paraID += 1;
+    paragraph.id = paraID;
+
+    modulesContainer.appendChild(paragraph);
+
+    if (levelField.value === "2") {
+        courses.level2.push({
+            id: paraID,
+            code: modNameField.value,
+            credits: parseInt(creditsField.value),
+            classification: parseInt(classField.value)
+        });
+    } else {
+        courses.level3.push({
+            id: paraID,
+            code: modNameField.value,
+            credits: parseInt(creditsField.value),
+            classification: parseInt(classField.value)
+        });
+    }
+
+    paragraph.addEventListener('dblclick', function(){
+        modulesContainer.removeChild(paragraph);
+        courses.level2 = courses.level2.filter((elem) => elem.id != paragraph.id);
+        courses.level3 = courses.level3.filter((elem) => elem.id != paragraph.id);
+    });
+})
+
+calcButton.addEventListener('click', function(){
+    let level2 = checkCredits(courses.level2);
+
+    let level3 = checkCredits(courses.level3);
+
+    if (level2.correctCredits && level3.correctCredits) {
+        level3.totalPoints = level3.totalPoints * 2;
+        let sumPoints = level2.totalPoints + level3.totalPoints;
+        let firstCheck = calcFirstCheck(sumPoints);
+        let secondCheck = calcSecondCheck(courses.level3);
+        alert(firstCheck >= secondCheck ? firstCheck : secondCheck);
+    } else {
+        alert("Incorrect number of credits");
+    }
+});
+
