@@ -54,7 +54,8 @@ p {
 
 #modulesContainer {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }

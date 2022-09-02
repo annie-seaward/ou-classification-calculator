@@ -47,6 +47,20 @@ function calcSecondCheck (arr) {
     }
 }
 
+function returnClass (classification) {
+    if (classification === 1) {
+        return "First Class (1st)"
+    } else if (classification === 2) {
+        return "Upper Second Class (2.1)"
+    } else if (classification === 3) {
+        return "Lower Second Class (2.2)"
+    } else if (classification === 4) {
+        return "Third Class (3rd)"
+    } else {
+        return "error"
+    }
+}
+
 let modulesContainer = document.getElementById('modulesContainer');
 
 let modNameField = document.getElementById('modName');
@@ -96,17 +110,24 @@ addModuleButton.addEventListener('click', function(){
 
 calcButton.addEventListener('click', function(){
     let level2 = checkCredits(courses.level2);
-
     let level3 = checkCredits(courses.level3);
+
+    var paragraph = document.createElement('p');
+    let resultContainer = document.getElementById('resultsContainer');
 
     if (level2.correctCredits && level3.correctCredits) {
         level3.totalPoints = level3.totalPoints * 2;
         let sumPoints = level2.totalPoints + level3.totalPoints;
         let firstCheck = calcFirstCheck(sumPoints);
         let secondCheck = calcSecondCheck(courses.level3);
-        alert(firstCheck >= secondCheck ? firstCheck : secondCheck);
+        let message = returnClass(firstCheck >= secondCheck ? firstCheck : secondCheck);
+        
+        paragraph.innerHTML = "<span class='blue'>" + message + "</span>";
+        resultContainer.appendChild(paragraph);
+
     } else {
-        alert("Incorrect number of credits");
+        paragraph.innerHTML = "<span class='blue'>" + "Incorrect number of credits added" + "</span>";
+        resultContainer.appendChild(paragraph);
     }
 });
 
