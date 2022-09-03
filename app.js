@@ -1,8 +1,14 @@
+//Object holds the information about each of the courses the users has entered
 let courses = {
     level2: [],
     level3: []
 };
 
+/***********************************************/
+/***Functions used to calc the classification***/
+/***********************************************/
+
+//check the user has the correct number of credits - 120 at each level
 function checkCredits (arr) {
     let totalCredits = arr.reduce((total, {credits}) => total + (credits), 0);
     let correctCredits;
@@ -16,6 +22,7 @@ function checkCredits (arr) {
     return ({totalPoints, correctCredits});
 }
 
+//check the number of points the user has
 function calcFirstCheck (total) {
     if (total <= 630) {
         return 1
@@ -30,6 +37,7 @@ function calcFirstCheck (total) {
     }
 }
 
+//check the highest 60 credits at level 3
 function calcSecondCheck (arr) {
     let classObj = {1: 0, 2: 0, 3: 0, 4: 0, 4: 0};
     for (var i = 0; i < arr.length; i++) {
@@ -47,6 +55,7 @@ function calcSecondCheck (arr) {
     }
 }
 
+//return a string for the correct classification
 function returnClass (classification) {
     if (classification === 1) {
         return "First Class (1st)"
@@ -61,6 +70,10 @@ function returnClass (classification) {
     }
 }
 
+/******************************************/
+/***DOM manipulation and event functions***/
+/******************************************/
+
 let modulesContainer = document.getElementById('modulesContainer');
 
 let modNameField = document.getElementById('modName');
@@ -72,6 +85,7 @@ let addModuleButton = document.getElementById('addModule');
 
 let paraID = 0;
 
+//when new module added display back to the user and add data to the object
 addModuleButton.addEventListener('click', function(){
     var paragraph = document.createElement('p');
 
@@ -101,6 +115,7 @@ addModuleButton.addEventListener('click', function(){
         });
     }
 
+    //allow the user to delete a module
     paragraph.addEventListener('dblclick', function(){
         modulesContainer.removeChild(paragraph);
         courses.level2 = courses.level2.filter((elem) => elem.id != paragraph.id);
@@ -108,6 +123,7 @@ addModuleButton.addEventListener('click', function(){
     });
 })
 
+//when calculate button clicked calculate and return the classification
 calcButton.addEventListener('click', function(){
     let level2 = checkCredits(courses.level2);
     let level3 = checkCredits(courses.level3);
