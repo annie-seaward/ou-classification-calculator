@@ -1,4 +1,4 @@
-# ou-classification-calculator
+# OU Classification Calculator
 
 View at: [https://ou-classification-calculator.vercel.app/](https://ou-classification-calculator.vercel.app/)
 
