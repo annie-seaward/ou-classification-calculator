@@ -1,6 +1,6 @@
 # ou-classification-calculator
 
-View at: https://annie-seaward.github.io/ou-classification-calculator/
+View at: [https://ou-classification-calculator.vercel.app/](https://ou-classification-calculator.vercel.app/)
 
 This application allows a user to input their Open University module results and returns the final classification they should achieve.
 
